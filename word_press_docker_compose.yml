@@ -1,0 +1,17 @@
+version: '3'
+services:
+  wordpress:
+     image: wordpress
+     environment:
+      WORDPRESS_DB_HOST: mysqlserver:3306
+      WORDPRESS_DB_PASSWORD: secret
+     ports:
+      - 80:80
+     depends_on:
+      - mysqlserver
+  mysqlserver:
+     image: mysql:5.7
+     environment:
+      MYSQL_ROOT_PASSWORD: secret
+     ports:
+      - 3306:3306
